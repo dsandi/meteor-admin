@@ -25,6 +25,9 @@ AutoForm.hooks
 						hook.done null, collection
 			return false
 		onSuccess: (formType, collection)->
+      if collection == 'Accesos'
+        Meteor.call 'generateMagicLink', insertDoc
+
 			AdminDashboard.alertSuccess 'Successfully created'
 			Router.go "/admin/#{collection}"
 
